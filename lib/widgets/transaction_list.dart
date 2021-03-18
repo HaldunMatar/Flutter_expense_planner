@@ -18,12 +18,14 @@ class TransactionList extends StatelessWidget {
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.purple, width: 2)),
+                    border: Border.all(
+                        color: Theme.of(context).accentColor, width: 2)),
                 padding: EdgeInsets.all(10),
                 child: Text(
                   '\$: ${transactions[index].amount.toStringAsExponential(2)}',
                   style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.purple),
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).primaryColor),
                 ),
               ),
               Column(
@@ -31,10 +33,7 @@ class TransactionList extends StatelessWidget {
                 children: [
                   Text(
                     transactions[index].title,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headline6,
                   ),
                   Text(DateFormat.yMMMEd().format(transactions[index].date),
                       style: TextStyle(
