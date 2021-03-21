@@ -31,33 +31,35 @@ class _NewTransactionState extends State<NewTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 10,
-      child: Container(
-        padding: EdgeInsets.all(25),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            TextField(
+    return SingleChildScrollView(
+      child: Card(
+        elevation: 10,
+        child: Container(
+          padding: EdgeInsets.all(25),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              TextField(
+                  onSubmitted: (_) => submiteData(),
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(labelText: 'Title'),
+                  controller: titleControler),
+              TextField(
+                keyboardType: TextInputType.number,
                 onSubmitted: (_) => submiteData(),
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(labelText: 'Title'),
-                controller: titleControler),
-            TextField(
-              keyboardType: TextInputType.number,
-              onSubmitted: (_) => submiteData(),
-              decoration: InputDecoration(labelText: 'Amount'),
-              controller: amontControler,
-            ),
-            TextButton(
-              onPressed: submiteData,
-              child: Text(
-                'Add Transaction11 ',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.purple),
+                decoration: InputDecoration(labelText: 'Amount'),
+                controller: amontControler,
               ),
-            )
-          ],
+              TextButton(
+                onPressed: submiteData,
+                child: Text(
+                  'Add Transaction11 ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.purple),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
