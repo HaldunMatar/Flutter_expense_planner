@@ -33,7 +33,7 @@ class _UserTransactionsState extends State<UserTransactions> {
     return Column(
       children: [
         NewTransaction(_addTransaction),
-        TransactionList(_userTransaction),
+        TransactionList(_userTransaction, _deleteTx),
       ],
     );
   }
