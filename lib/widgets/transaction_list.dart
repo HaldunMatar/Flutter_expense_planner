@@ -12,6 +12,7 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
     return transactions.isEmpty
         ? LayoutBuilder(builder: (ctx, Constraints) {
             return Column(
@@ -57,11 +58,16 @@ class TransactionList extends StatelessWidget {
                   subtitle: Text(
                     DateFormat.yMMMd().format(transactions[index].date),
                   ),
-                  trailing: IconButton(
-                    icon: Icon(Icons.delete),
-                    color: Theme.of(context).errorColor,
-                    onPressed: () => deleteTx(transactions[index].id),
-                  ),
+                  trailing: mediaQuery.size.width > 450
+                      ? TextButton.icon(
+                          onPressed: () => {deleteTx(transactions[index].id)},
+                          icon: Icon(Icons.delete),
+                          label: Text("Delete"))
+                      : IconButton(
+                          icon: Icon(Icons.delete),
+                          color: Theme.of(context).errorColor,
+                          onPressed: () => deleteTx(transactions[index].id),
+                        ),
                 ),
               );
             },
