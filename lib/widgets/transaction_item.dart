@@ -50,9 +50,7 @@ class _TransactionItemState extends State<TransactionItem> {
           radius: 30,
           child: Padding(
             padding: EdgeInsets.all(6),
-            child: FittedBox(
-              child: Text('\$${widget.transaction.amount}'),
-            ),
+            child: Text('\$${widget.transaction.amount}'),
           ),
         ),
         title: Text(

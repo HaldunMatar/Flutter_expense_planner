@@ -20,32 +20,41 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = ThemeData();
     return MaterialApp(
       title: 'Personal Expenses',
       theme: ThemeData(
-          primarySwatch: Colors.purple,
-          accentColor: Colors.amber,
+        primarySwatch: Colors.purple,
+        //   accentColor: Colors.amber,
+        colorScheme: theme.colorScheme.copyWith(
+          secondary: Colors.amber,
+          primary: Theme.of(context).primaryColor,
+        ),
+        //errorColor: Colors.red,
 
-          //errorColor: Colors.red,
-
-          fontFamily: 'Quicksand',
-          textTheme: ThemeData.light().textTheme.copyWith(
-                headline6: TextStyle(
-                  fontFamily: 'OpenSans',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
-                button: TextStyle(color: Colors.white),
+        textTheme: ThemeData.light().textTheme.copyWith(
+              headline6: TextStyle(
+                fontFamily: 'OpenSans',
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
               ),
-          appBarTheme: AppBarTheme(
-            textTheme: ThemeData.light().textTheme.copyWith(
+              button: TextStyle(color: Colors.white),
+            ),
+        appBarTheme: AppBarTheme(
+          titleTextStyle: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+          /* textTheme: ThemeData.light().textTheme.copyWith(
                   headline6: TextStyle(
                     fontFamily: 'OpenSans',
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
-                ),
-          )),
+                ),*/
+        ),
+      ),
       home: MyHomePage(),
     );
   }
@@ -63,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Transaction(
       id: 't1',
       title: 'New Shoes',
-      amount: 69.99,
+      amount: 20.99,
       date: DateTime.now(),
     ),
     Transaction(
@@ -163,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage> {
             style: Theme.of(context).textTheme.headline6,
           ),
           Switch.adaptive(
-              activeColor: Theme.of(context).accentColor,
+              activeColor: Theme.of(context).colorScheme.secondary,
               value: _showChart,
               onChanged: (val) {
                 setState(() {
